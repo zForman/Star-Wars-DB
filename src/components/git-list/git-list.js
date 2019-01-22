@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 export default class GitList extends Component {
+    idx = 1
     state = {
         itemList: null
     }
@@ -8,21 +9,20 @@ export default class GitList extends Component {
     componentDidMount() {
         const { getData } = this.props
 
-        getData()
+        getData('p')
             .then((itemList) => {
-                itemList.map((itemList) => {
-                    return this.setState(
-                        itemList
-                    )
-                })
+                return this.setState(
+                    { itemList }
+                )
             })
     }
 
     renderItems = (arr) => {
 
-        return arr.map(({author}) => {
+        return arr.map(({ author }) => {
             return (
-                <li className="list-group-item">
+                <li className="list-group-item"
+                    key={ this.idx++ }>
                     { author }
                 </li>
             )
@@ -32,13 +32,16 @@ export default class GitList extends Component {
 
 
     render() {
+
         const { itemList } = this.state
 
-        const items = this.renderItems(itemList)
+        if (!itemList) {
+            return <div>Error</div>
+        }
 
         return (
             <ul className="item-list list-group">
-                {items }
+                { this.renderItems(itemList) }
             </ul>
         )
     }

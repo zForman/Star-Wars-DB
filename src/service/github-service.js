@@ -6,7 +6,7 @@ export default class GithubService {
         if (!res.ok) {
             throw new Error(`Could not fetch , received ${ res.status }`)
         }
-        return await res.json()
+        return res.json()
     }
 
     getAllRepositories = async () => {
