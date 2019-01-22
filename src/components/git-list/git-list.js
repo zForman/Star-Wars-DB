@@ -19,11 +19,12 @@ export default class GitList extends Component {
 
     renderItems = (arr) => {
 
-        return arr.map(({ author }) => {
+        return arr.map(({ author, language }) => {
             return (
                 <li className="list-group-item"
                     key={ this.idx++ }>
-                    { author }
+                    <h4>Author: { author.charAt(0).toUpperCase() + author.slice(1) }</h4>
+                    <p>Program Language: { language }</p>
                 </li>
             )
         })
@@ -32,7 +33,6 @@ export default class GitList extends Component {
 
 
     render() {
-
         const { itemList } = this.state
 
         if (!itemList) {
