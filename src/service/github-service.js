@@ -4,7 +4,7 @@ export default class GithubService {
     getResource = async (url) => {
         const res = await fetch(`${ this._apiBase }${ url }`)
         if (!res.ok) {
-            throw new Error(`Could not fetch , received ${ res.status }`)
+            throw new Error(`Не удается получить данные , ошибка ${ res.status }`)
         }
         return res.json()
     }

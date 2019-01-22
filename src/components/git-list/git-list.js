@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import LoaderIndicator from '../loader-indicator'
+
 
 export default class GitList extends Component {
     idx = 1
@@ -11,6 +13,7 @@ export default class GitList extends Component {
 
         getData('p')
             .then((itemList) => {
+                console.log(typeof itemList)
                 return this.setState(
                     { itemList }
                 )
@@ -24,7 +27,7 @@ export default class GitList extends Component {
                 <li className="list-group-item"
                     key={ this.idx++ }>
                     <h4>Author: { author.charAt(0).toUpperCase() + author.slice(1) }</h4>
-                    <p>Program Language: { language }</p>
+                    <p>Programing Language: { language }</p>
                 </li>
             )
         })
@@ -36,7 +39,7 @@ export default class GitList extends Component {
         const { itemList } = this.state
 
         if (!itemList) {
-            return <div>Error</div>
+            return <LoaderIndicator/>
         }
 
         return (
