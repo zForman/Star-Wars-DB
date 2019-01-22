@@ -24,11 +24,15 @@ export default class GitList extends Component {
 
         return arr.map(({ author, language }) => {
             return (
-                <li className="list-group-item"
-                    key={ this.idx++ }>
-                    <h4>Author: { author.charAt(0).toUpperCase() + author.slice(1) }</h4>
-                    <p>Programing Language: { language }</p>
-                </li>
+                <tr key={ this.idx++ }>
+                    <th>{ this.idx }</th>
+                    <td className="">
+                        <p>{ author.charAt(0).toUpperCase() + author.slice(1) }</p>
+                    </td>
+                    <td className="">
+                        <p>{ language }</p>
+                    </td>
+                </tr>
             )
         })
     }
@@ -37,15 +41,31 @@ export default class GitList extends Component {
 
     render() {
         const { itemList } = this.state
-
         if (!itemList) {
             return <LoaderIndicator/>
         }
+        const item = this.renderItems(itemList)
+
 
         return (
-            <ul className="item-list list-group">
-                { this.renderItems(itemList) }
-            </ul>
+            <table className="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Language</th>
+                    <th scope="col">Handle</th>
+                </tr>
+                </thead>
+                <tbody>
+                { item }
+                </tbody>
+            </table>
         )
+        // return (
+        //     <ul className="d-flex item-list list-group">
+        //         { this.renderItems(itemList) }
+        //     </ul>
+        // )
     }
 }
