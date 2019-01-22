@@ -1,52 +1,55 @@
 import React, { Component } from 'react'
 import LoaderIndicator from '../loader-indicator'
+import './git-list.css'
 
 
 export default class GitList extends Component {
-    idx = 1
+    idx = 0
     state = {
         itemList: null
     }
+    avatar
 
     componentDidMount() {
         const { getData } = this.props
-
-        getData('p')
-            .then((itemList) => {
-                console.log(typeof itemList)
-                return this.setState(
-                    { itemList }
-                )
-            })
+        getData().then((itemList) => this.setState({ itemList }))
     }
 
     renderItems = (arr) => {
+        return arr.map(({ author, language, builtBy }) => {
 
-        return arr.map(({ author, language }) => {
+            const imgTemplate = builtBy.map((img) => {
+                return (
+                    <img className='h-25' src={ img.avatar } alt=""/>
+                )
+            })
+
+
+
             return (
-                <tr key={ this.idx++ }>
+                <tr key={ this.idx++ } className='tr-item-list'>
                     <th>{ this.idx }</th>
                     <td className="">
-                        <p>{ author.charAt(0).toUpperCase() + author.slice(1) }</p>
+                        { author.charAt(0).toUpperCase() + author.slice(1) }
                     </td>
                     <td className="">
-                        <p>{ language }</p>
+                        { language }
+                    </td>
+                    <td className="">
+                        { imgTemplate }
                     </td>
                 </tr>
             )
         })
     }
 
-
-
     render() {
         const { itemList } = this.state
         if (!itemList) {
             return <LoaderIndicator/>
         }
+
         const item = this.renderItems(itemList)
-
-
         return (
             <table className="table">
                 <thead>
@@ -54,7 +57,7 @@ export default class GitList extends Component {
                     <th scope="col">#</th>
                     <th scope="col">Author</th>
                     <th scope="col">Language</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Avatar</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,10 +65,5 @@ export default class GitList extends Component {
                 </tbody>
             </table>
         )
-        // return (
-        //     <ul className="d-flex item-list list-group">
-        //         { this.renderItems(itemList) }
-        //     </ul>
-        // )
     }
 }

@@ -21,10 +21,10 @@ const Header = () => {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">About</a>
+                                <a className="nav-link" href="#">Top Languages</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Services</a>
+                                <a className="nav-link" href="#">Top Repos</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Contact</a>

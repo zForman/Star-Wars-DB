@@ -2,7 +2,7 @@
     color: official;
     display: inline-block;
     position: relative;
-    width: 64px;
+    width: 60px;
     height: 64px;
 }
 .lds-spinner div {
@@ -70,7 +70,7 @@
 }
 @keyframes lds-spinner {
     0% {
-        opacity: 1;
+        opacity: 10;
     }
     100% {
         opacity: 0;
