@@ -11,6 +11,7 @@ export default class App extends Component {
         return (
             <div>
                 <GitList getData={ this.GithubService.getAllRepositories }/>
+                <div>Hello</div>
             </div>
         )
     }
