@@ -2,3 +2,8 @@
     background: #444444;
     cursor: pointer;
 }
+
+.img-avatar {
+    background: aqua;
+    alignment: right;
+}

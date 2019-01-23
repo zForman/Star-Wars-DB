@@ -13,7 +13,6 @@ export default class App extends Component {
             <div>
                 <Header/>
                 <GitList getData={ this.GithubService.getAllRepositories }/>
-                <div>App Component</div>
             </div>
         )
     }

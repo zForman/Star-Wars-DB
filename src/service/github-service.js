@@ -4,13 +4,15 @@ export default class GithubService {
     getResource = async (url) => {
         const res = await fetch(`${ this._apiBase }${ url }`)
         if (!res.ok) {
-            throw new Error(`Не удается получить данные , ошибка ${ res.status }`)
+            throw new Error(`Вам попалась ошибка ${ res.status }?
+            Поздравляем. Вы сломали наш сайт. `)
         }
         return res.json()
     }
 
-    getAllRepositories = async () => {
-        const res = await this.getResource('repositories')
+    getAllRepositories = async (param) => {
+        const res = await this.getResource(param)
+
         return res.map(this._transformRepositories)
     }
 
