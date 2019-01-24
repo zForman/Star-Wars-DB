@@ -5,10 +5,11 @@ export default class GitListItem extends Component {
         const { item } = this.props
         return item.map(({ author, language, builtBy }, key) => {
 
-            const teamTemplate = builtBy.map((team) => team.username)
+            const teamTemplate = builtBy.map((team, key) => {
+                return (<p key={ key }>{ team.username }</p>)
+            })
             const imgTemplate = builtBy.map((img, key) => <img key={ key } className='rounded-circle h-25 m-2'
-                                                               src={ img.avatar }
-                                                               alt=""/>)
+                                                               src={ img.avatar } alt=""/>)
 
             return (
                 <tr className='tr-item-list' key={ key }>
@@ -32,6 +33,7 @@ export default class GitListItem extends Component {
 
 
     render() {
+
         return (
             <React.Fragment>
                 { this.renderItem() }
