@@ -7,7 +7,6 @@ import './app.css'
 export default class App extends Component {
     GithubService = new GithubService()
 
-
     render() {
         return (
             <div>

@@ -12,7 +12,6 @@ export default class GithubService {
 
     getAllRepositories = async (param) => {
         const res = await this.getResource(param)
-
         return res.map(this._transformRepositories)
     }
 

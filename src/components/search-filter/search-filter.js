@@ -8,8 +8,8 @@ export default class SearchFilter extends Component {
 
     handleInputChange = (e) => {
         const query = e.currentTarget.value
-        console.log(query)
         this.setState({ query })
+        this.props.handleInputChange(query)
     }
 
     render() {

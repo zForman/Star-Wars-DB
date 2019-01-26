@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SearchFilter from '../search-filter/search-filter'
+
 
 
 export default class Header extends Component {
@@ -37,7 +37,6 @@ export default class Header extends Component {
                         </div>
                     </div>
                 </nav>
-                <SearchFilter/>
             </div>
         )
     }
