@@ -34,9 +34,7 @@ export default class GitList extends Component {
         if (!itemList) {
             return <LoaderIndicator/>
         }
-
         const filtered = this.search(itemList, query)
-        console.log(filtered)
 
         return (
             <React.Fragment>
